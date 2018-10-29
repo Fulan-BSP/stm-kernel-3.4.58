@@ -21,7 +21,7 @@
 #include <linux/pm.h>
 #include <linux/io.h>
 
-#include <asm/system.h>
+//#include <asm/system.h>
 
 #include "ilc3.h"
 

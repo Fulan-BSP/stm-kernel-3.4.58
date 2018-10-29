@@ -40,6 +40,9 @@ snd-stm-conv-dac-sc-y := conv_dac_sc.o
 obj-$(CONFIG_SND_STM_FLI7610) += snd-stm-fli7610.o
 snd-stm-fli7610-y := fli7610.o
 
+obj-$(CONFIG_SND_STM_STX7100) += snd-stm-stx7100.o
+snd-stm-stx7100-y := stx7100.o
+
 obj-$(CONFIG_SND_STM_STX7108) += snd-stm-stx7108.o
 snd-stm-stx7108-y := stx7108.o
 

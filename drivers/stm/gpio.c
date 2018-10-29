@@ -559,7 +559,7 @@ int stpio_flagged_request_irq(struct stpio_pin *pin, int comp,
 	result = request_irq(irq, stpio_irq_wrapper, 0, owner, pin);
 	BUG_ON(result);
 
-	if (flags & STPIO_IRQ_DISABLED) {
+	if (flags & IRQD_IRQ_DISABLED) {
 		/* This is a race condition waiting to happen... */
 		disable_irq(irq);
 	}
@@ -625,6 +625,7 @@ const char *stm_gpio_get_direction(int gpio)
 	int pin_no = stm_gpio_pin(gpio);
 	struct stm_gpio_port *port = &stm_gpio_ports[port_no];
 	const char *direction;
+	int __WARN(void);
 
 	switch (get__PIO_PCx(port->base, pin_no)) {
 	case value__PIO_PCx__INPUT_WEAK_PULL_UP():

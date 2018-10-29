@@ -54,6 +54,12 @@ static inline long stm_soc_version_minor(void)
 #define stm_soc_is_stih415()	(0)
 #endif
 
+#ifdef CONFIG_CPU_SUBTYPE_STX7100
+#define stm_soc_is_stx7100()    (1)
+#else
+#define stm_soc_is_stx7100()    (0)
+#endif
+
 #ifdef CONFIG_CPU_SUBTYPE_STX7108
 #define stm_soc_is_stx7108()	(1)
 #else

@@ -35,6 +35,16 @@
 #define __raw_readl(a)		(__chk_io_ptr(a), *(volatile u32 __force *)(a))
 #define __raw_readq(a)		(__chk_io_ptr(a), *(volatile u64 __force *)(a))
 
+ /* SuperH on-chip I/O functions */
+#define ctrl_inb                __raw_readb
+#define ctrl_inw                __raw_readw
+#define ctrl_inl                __raw_readl
+#define ctrl_inq                __raw_readq
+#define ctrl_outb               __raw_writeb
+#define ctrl_outw               __raw_writew
+#define ctrl_outl               __raw_writel
+#define ctrl_outq               __raw_writeq
+
 #define readb_relaxed(c)	({ u8  __v = ioswabb(__raw_readb(c)); __v; })
 #define readw_relaxed(c)	({ u16 __v = ioswabw(__raw_readw(c)); __v; })
 #define readl_relaxed(c)	({ u32 __v = ioswabl(__raw_readl(c)); __v; })

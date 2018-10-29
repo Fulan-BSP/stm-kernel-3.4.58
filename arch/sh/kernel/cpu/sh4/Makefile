@@ -28,6 +28,7 @@ obj-$(CONFIG_CPU_SUBTYPE_SH7760)	+= setup-sh7760.o
 obj-$(CONFIG_CPU_SUBTYPE_SH4_202)	+= setup-sh4-202.o
 obj-$(CONFIG_CPU_SUBTYPE_STXH205)	+= setup-stxh205.o
 obj-$(CONFIG_CPU_SUBTYPE_STIH415)	+= setup-stih415.o
+obj-$(CONFIG_CPU_SUBTYPE_STX7100)	+= setup-stx7100.o
 obj-$(CONFIG_CPU_SUBTYPE_STX7108)	+= setup-stx7108.o
 
 # Primary on-chip clocks (common)
@@ -35,6 +36,7 @@ ifndef CONFIG_CPU_SH4A
 clock-$(CONFIG_CPU_SH4)			:= clock-sh4.o
 clock-$(CONFIG_CPU_SUBTYPE_STXH205)	:= clock-stxh205.o
 clock-$(CONFIG_CPU_SUBTYPE_STIH415)	:= clock-stih415.o
+clock-$(CONFIG_CPU_SUBTYPE_STX7100)	:= clock-stx7100.o
 clock-$(CONFIG_CPU_SUBTYPE_STX7108)	:= clock-stx7108.o
 endif
 
@@ -53,10 +55,12 @@ obj-$(CONFIG_STM_CPU_FREQ)		+= $(cpufreq-y)
 
 suspend-y				:= stm_suspend.o stm_suspend-core.o
 suspend-$(CONFIG_CPU_SUBTYPE_STXH205)	+= suspend-stxh205.o
+suspend-$(CONFIG_CPU_SUBTYPE_STX7100)	+= suspend-stx7100.o
 suspend-$(CONFIG_CPU_SUBTYPE_STX7108)	+= suspend-stx7108.o
 obj-$(CONFIG_SUSPEND)			+= $(suspend-y)
 
 hom-y					:= stm_hom.o stm_hom-core.o
 hom-$(CONFIG_CPU_SUBTYPE_STXH205)	+= hom-stxh205.o
+hom-$(CONFIG_CPU_SUBTYPE_STX7100)	+= hom-stx7100.o
 hom-$(CONFIG_CPU_SUBTYPE_STX7108)	+= hom-stx7108.o
 obj-$(CONFIG_HIBERNATION_ON_MEMORY)	+= $(hom-y)
