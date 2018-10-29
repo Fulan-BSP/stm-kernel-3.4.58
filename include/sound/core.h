@@ -368,6 +368,23 @@ void __snd_printk(unsigned int level, const char *file, int line,
 	__snd_printk(level, __FILE__, __LINE__, fmt, ##args)
 
 /**
+* snd_assert - run-time assertion macro
+ * @expr: expression
+ *
+ * This macro checks the expression in run-time and invokes the commands
+ * given in the rest arguments if the assertion is failed.
+ * When CONFIG_SND_DEBUG is not set, the expression is executed but
+ * not checked.
+ */
+#define snd_assert(expr, args...) do {					\
+	if (unlikely(!(expr))) {					\
+		snd_printk(KERN_ERR "BUG? (%s)\n", __ASTRING__(expr));	\
+		dump_stack();						\
+		args;							\
+	}								\
+} while (0)
+
+/**
  * snd_BUG - give a BUG warning message and stack trace
  *
  * Calls WARN() if CONFIG_SND_DEBUG is set.
@@ -396,6 +413,7 @@ void __snd_printk(unsigned int level, const char *file, int line,
 
 #define snd_printd(fmt, args...)	do { } while (0)
 #define _snd_printd(level, fmt, args...) do { } while (0)
+#define snd_assert(expr, args...)	(void)(expr)
 #define snd_BUG()			do { } while (0)
 static inline int __snd_bug_on(int cond)
 {
@@ -470,5 +488,6 @@ const struct snd_pci_quirk *
 snd_pci_quirk_lookup_id(u16 vendor, u16 device,
 			const struct snd_pci_quirk *list);
 #endif
+int snd_get_minor(int type, int card, int dev);
 
 #endif /* __SOUND_CORE_H */
