@@ -119,6 +119,16 @@ config I2C_ISCH
 
 	  This driver can also be built as a module. If so, the module
 	  will be called i2c-isch.
+	  
+config I2C_ST40_PIO
+	tristate "Team Ducktales STM I2C Controller in PIO Mode"
+	depends on CPU_SUBTYPE_ST40
+	help
+	  Enable this option to add support for STMicroelectronics SoCs
+	  hardware SSC (Synchronous Serial Controller) as a I2C controller.
+
+	  i2c-stm will not work on some platforms and a st40-pio like driver was
+	  developed for stlinux 2.4
 
 config I2C_PIIX4
 	tristate "Intel PIIX4 and compatible (ATI/AMD/Serverworks/Broadcom/SMSC)"
