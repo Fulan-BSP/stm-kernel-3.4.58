@@ -1584,7 +1584,7 @@ static void stmmac_check_ether_addr(struct stmmac_priv *priv)
 	if (!is_valid_ether_addr(priv->dev->dev_addr)) {
 		priv->hw->mac->get_umac_addr((void __iomem *)
 					     priv->dev->base_addr,
-					     priv->dev->dev_addr, 0);
+					     priv->dev->dev_addr, 0, g_env_mac);
 		if (!is_valid_ether_addr(priv->dev->dev_addr))
 			eth_hw_addr_random(priv->dev);
 	}
@@ -3045,6 +3045,8 @@ static int __init stmmac_cmdline_opt(char *str)
 		} else if (!strncmp(opt, "wol_plus_en:", 12)) {
 			if (kstrtoint(opt + 12, 0, &wol_plus_en))
 				goto err;
+        } else if( !strncmp(opt,"ethaddr:", 8)) {
+            memcpy(g_env_mac, opt + 8, 17);
 		}
 	}
 	return 0;
