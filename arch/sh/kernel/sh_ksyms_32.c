@@ -22,6 +22,9 @@ EXPORT_SYMBOL(__clear_user);
 EXPORT_SYMBOL(_ebss);
 EXPORT_SYMBOL(empty_zero_page);
 
+/* Dagobert: Need to export this if we use CONFIG_CC_OPTIMIZE_FOR_SIZE */
+EXPORT_SYMBOL(strcpy);
+
 #define DECLARE_EXPORT(name)		\
 	extern void name(void);EXPORT_SYMBOL(name)
 
