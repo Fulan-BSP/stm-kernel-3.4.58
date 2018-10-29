@@ -18,6 +18,8 @@ static const char *cpu_name[] = {
 	[CPU_SH7751R]	= "SH7751R",	[CPU_SH7760]	= "SH7760",
 	[CPU_SH4_202]	= "SH4-202",	[CPU_SH4_501]	= "SH4-501",
 
+	[CPU_STX7100]	= "STx7100",
+	[CPU_STX7109]   = "STx7109",
 	[CPU_STX7108]   = "STx7108",
 	[CPU_STXH205]	= "STxH205",
 	[CPU_STIH415]   = "STiH415",
