@@ -7,6 +7,12 @@
 
 #include "coprocessor.h"
 
+#if defined CONFIG_CPU_SUBTYPE_STX7100
+#include <linux/stm/stx7100.h>
+#else
+#error Need to define the sysconf configuration for this CPU subtype
+#endif
+
 #define DRIVER_NAME "stm-coproc-st40"
 
 struct coproc_st40 {
