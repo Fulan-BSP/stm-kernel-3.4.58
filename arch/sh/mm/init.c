@@ -41,6 +41,7 @@ void __init __weak plat_mem_setup(void)
 	/* Nothing to see here, move along. */
 }
 
+EXPORT_SYMBOL(init_mm);
 #ifdef CONFIG_MMU
 static pte_t *__get_pte_phys(unsigned long addr)
 {
